@@ -13,6 +13,7 @@
     
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -68,19 +69,24 @@
     </style>
 </head>
 
-<body class="font-sans text-gray-800 antialiased selection:bg-cat-eye selection:text-white">
+<body class="font-sans text-gray-800 dark:text-gray-100 antialiased selection:bg-cat-eye selection:text-white bg-white dark:bg-gray-900 transition-colors duration-500">
 
     <!-- 내비게이션 / 상단 바 -->
-    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
+    <nav class="sticky top-0 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-sm transition">
         <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="text-2xl font-display font-bold text-cat-gray flex items-center gap-2">
                 <i class="fa-solid fa-cat text-cat-eye"></i>
                 <span>Lay's Space</span>
+
+                <button id="themeToggle"
+                class="bg-gray-200 dark:bg-gray-700 w-11 h-11 rounded-full flex items-center justify-center transition">
+                <i id="themeIcon" class="fa-solid fa-moon"></i>
+                </button>
             </div>
             <div class="flex gap-4 text-sm font-medium text-gray-500">
                 <a href="#about" class="hover:text-cat-eye transition">소개</a>
-                <a href="#gallery" class="hover:text-cat-eye transition">갤러리</a>
                 <a href="#features" class="hover:text-cat-eye transition">특징</a>
+                <a href="#gallery" class="hover:text-cat-eye transition">갤러리</a>
             </div>
         </div>
     </nav>
@@ -111,11 +117,16 @@
                     #러시안블루 #공주님
                 </div>
                 
-                <h1 class="text-5xl md:text-6xl font-display font-bold text-gray-800">
-                    안녕, 난 <span class="text-transparent bg-clip-text bg-gradient-to-r from-cat-gray to-gray-500">레이</span>야!
+                <h1 class="text-5xl md:text-6xl font-display font-bold text-gray-800 dark:text-white transition-colors duration-300">
+                    안녕, 난 <span class="text-transparent bg-clip-text
+             bg-gradient-to-r
+             from-cat-gray to-gray-500
+             dark:from-cat-eye dark:to-cat-eye">
+    레이
+</span>야!
                 </h1>
                 
-                <p class="text-xl text-gray-600 leading-relaxed font-light">
+                <p class="text-xl text-gray-600 dark:text-gray-200 leading-relaxed font-light transition-colors duration-300">
                     우리 집의 최고 귀염둥이, 위풍당당한 냥냥이 레이를 소개합니다. 
                     초록빛 보석 같은 눈망울과 부드러운 회색 털옷을 입은 우아한 숙녀랍니다.
                 </p>
@@ -355,6 +366,29 @@ moreBtn.onclick=()=>{
     }
 
 }
+
+const themeToggle = document.getElementById("themeToggle");
+const themeIcon = document.getElementById("themeIcon");
+
+// 저장된 테마 불러오기
+if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.classList.add("dark");
+    themeIcon.classList.replace("fa-moon", "fa-sun");
+}
+
+themeToggle.addEventListener("click", () => {
+
+    document.documentElement.classList.toggle("dark");
+
+    if(document.documentElement.classList.contains("dark")){
+        localStorage.setItem("theme","dark");
+        themeIcon.classList.replace("fa-moon","fa-sun");
+    }else{
+        localStorage.setItem("theme","light");
+        themeIcon.classList.replace("fa-sun","fa-moon");
+    }
+
+});
     </script>
 </body>
 </html>
