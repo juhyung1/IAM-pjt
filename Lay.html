@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사랑스러운 우리집 고양이, 레이</title>
+    <!-- Tailwind CSS 로드 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts 설정 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&family=Poor+Story&display=swap" rel="stylesheet">
+    <!-- Font Awesome 아이콘 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'cat-gray': '#8a8d91', // 사진의 러시안 블루 톤을 참고한 색상
+                        'cat-eye': '#95b8a0', // 사진의 고양이 눈동자 색상을 참고한 포인트 색상
+                        'cat-bg': '#f5f5f5',
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans KR', 'sans-serif'],
+                        display: ['Poor Story', 'cursive'], // 귀여운 느낌의 폰트
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* 커스텀 스타일 (주로 애니메이션 및 특정 효과) */
+        body {
+            background-color: #fcfcfc;
+            /* 은은한 발바닥 패턴 배경 (SVG Base64 제외 규칙 준수 - CSS 그라디언트로 대체) */
+            background-image: none
+        }
+
+        .hero-image {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-image:hover {
+            transform: scale(1.02);
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translate(0,  0px); }
+            50%  { transform: translate(0, -10px); }
+            100%   { transform: translate(0, -0px); }
+        }
+
+        .paw-print {
+            color: #d1d5db;
+            transition: color 0.3s ease;
+        }
+        
+        .paw-print:hover {
+            color: #95b8a0; /* 눈동자 색으로 변경 */
+        }
+    </style>
+</head>
+
+<body class="font-sans text-gray-800 dark:text-gray-100 antialiased selection:bg-cat-eye selection:text-white bg-white dark:bg-gray-800 transition-colors duration-500">
+
+    <!-- 내비게이션 / 상단 바 -->
+    <nav class="sticky top-0 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-sm transition">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-2xl font-display font-bold text-cat-gray flex items-center gap-2">
+                <i class="fa-solid fa-cat text-cat-eye"></i>
+                <span>Lay's Space</span>
+
+                <button id="themeToggle"
+                class="bg-gray-200 dark:bg-gray-700 w-11 h-11 rounded-full flex items-center justify-center transition">
+                <i id="themeIcon" class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+            <div class="flex gap-4 text-sm font-medium text-gray-500">
+                <a href="#about" class="hover:text-cat-eye transition">소개</a>
+                <a href="#features" class="hover:text-cat-eye transition">특징</a>
+                <a href="#gallery" class="hover:text-cat-eye transition">갤러리</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-4 py-8 sm:py-12">
+        
+        <section class="flex flex-col md:flex-row items-center gap-8 mb-20 pt-8" id="about">
+            <!-- 사진 영역 -->
+            <div class="w-full md:w-1/2 relative group">
+                <!-- 장식용 배경 요소 -->
+                <div class="absolute -inset-2 bg-gradient-to-r from-cat-gray to-cat-eye opacity-30 rounded-full blur-lg group-hover:opacity-50 transition duration-500"></div>
+                
+                <!-- 제공된 이미지 사용 -->
+                <img src="main.jpg" alt="반려묘 레이의 모습" class="hero-image relative w-full h-auto object-cover rounded-[2rem] border-4 border-white aspect-square object-top">
+                
+                <!-- 떠다니는 장식 아이콘 -->
+                <div class="absolute -top-4 -right-4 bg-white p-3 rounded-full shadow-lg floating hidden sm:block">
+                    <i class="fa-solid fa-fish text-xl text-cat-eye"></i>
+                </div>
+                <div class="absolute -bottom-4 -left-4 bg-white p-3 rounded-full shadow-lg floating hidden sm:block" style="animation-delay: 1s;">
+                    <i class="fa-solid fa-heart text-xl text-pink-400"></i>
+                </div>
+            </div>
+
+            <!-- 텍스트 정보 영역 -->
+            <div class="w-full md:w-1/2 space-y-6 text-center md:text-left">
+                <div class="inline-block px-3 py-1 bg-cat-eye/20 text-cat-eye rounded-full text-sm font-semibold mb-2">
+                    #러시안블루 #공주님
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl font-display font-bold text-gray-800 dark:text-white transition-colors duration-300">
+                    안녕, 난 <span class="text-transparent bg-clip-text
+             bg-gradient-to-r
+             from-cat-gray to-gray-500
+             dark:from-cat-eye dark:to-cat-eye">
+    레이
+</span>야!
+                </h1>
+                
+                <p class="text-xl text-gray-600 dark:text-gray-200 leading-relaxed font-light transition-colors duration-300">
+                    우리 집의 최고 귀염둥이, 위풍당당한 냥냥이 레이를 소개합니다. 
+                    초록빛 보석 같은 눈망울과 부드러운 회색 털옷을 입은 우아한 숙녀랍니다.
+                </p>
+
+                <!-- 상세 정보 카드 -->
+                <div class="grid grid-cols-2 gap-4 pt-4">
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center md:items-start">
+                        <span class="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-1">Name</span>
+                        <span class="text-lg font-bold text-gray-800">레이 (Lay)</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center md:items-start">
+                        <span class="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-1">Age</span>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-cake-candles text-cat-eye"></i>
+                            <span class="text-lg font-bold text-gray-800">9살</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center md:items-start">
+                        <span class="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-1">Gender</span>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-venus text-pink-400"></i>
+                            <span class="text-lg font-bold text-gray-800">여아 (Female)</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center md:items-start">
+                        <span class="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-1">Personality</span>
+                        <span class="text-lg font-bold text-gray-800">조용한 애교쟁이</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="mb-20">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-display font-bold text-gray-800 inline-block relative">
+                    레이의 매력 포인트
+                    <span class="absolute -bottom-2 left-0 w-full h-1 bg-cat-eye/30 rounded-full"></span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 특징 1 -->
+                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-md transition text-center group">
+                    <div class="w-16 h-16 bg-cat-eye/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
+                        <i class="fa-regular fa-eye text-2xl text-cat-eye"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">깊은 에메랄드 눈빛</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        9년의 묘생이 담긴 투명하고 깊은 초록빛 눈동자가 매력적이에요. 조용히 바라볼 때면 마음이 편안해진답니다.
+                    </p>
+                </div>
+
+                <!-- 특징 2 -->
+                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-md transition text-center group">
+                    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-shirt text-2xl text-cat-gray"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">우아한 벨벳 털옷</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        러시안 블루 특유의 은빛 도는 회색 털을 가졌어요. 쓰다듬으면 고급 벨벳처럼 부드러워 레이도, 집사도 힐링되는 시간이에요.
+                    </p>
+                </div>
+
+                <!-- 특징 3 -->
+                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-md transition text-center group">
+                    <div class="w-16 h-16 bg-pink-50 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-face-kiss-wink-heart text-2xl text-pink-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">얌전한 애교쟁이</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        우다다 뛰어다니기보단 조용히 다가와 옆에 웅크리는 걸 좋아해요. 조심스럽게 머리를 비비며 내는 작은 골골송은 최고의 선물이죠.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="mb-20">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl font-display font-bold text-gray-800">
+                    <i class="fa-solid fa-camera-retro mr-2 text-cat-eye"></i>레이의 일상 기록
+                </h2>
+            </div>
+
+            <!-- CSS Grid를 이용한 갤러리 레이아웃 -->
+            <div id="galleryGrid" class="grid grid-cols-2 gap-4">
+                <!-- 제공된 원본 사진 재사용 (강조) -->
+                <div class="gallery-item rounded-[2rem] overflow-hidden shadow-sm">
+                 <img src="main.jpg" class="w-full h-64 object-cover">
+                </div>
+
+                <!-- 플레이스홀더 이미지 (레이의 다른 모습 상상) -->
+                <div class="gallery-item rounded-[2rem] overflow-hidden shadow-sm">
+                <img src="lay1.jpg" class="w-full h-64 object-cover">
+                </div>
+
+                <div class="gallery-item rounded-[2rem] overflow-hidden shadow-sm">
+                <img src="lay2.jpg" class="w-full h-64 object-cover">
+                </div>
+
+                <div class="gallery-item rounded-[2rem] overflow-hidden shadow-sm">
+                <img src="lay3.jpg" class="w-full h-64 object-cover">
+                </div>
+
+                <div class="gallery-item rounded-[2rem] overflow-hidden shadow-sm">
+                <img src="lay4.jpg" class="w-full h-64 object-cover">
+                </div>
+
+                <div class="gallery-item rounded-[2rem] overflow-hidden shadow-sm">
+                <img src="lay5.jpg" class="w-full h-64 object-cover">
+                </div>
+
+                <div class="gallery-item rounded-[2rem] overflow-hidden shadow-sm">
+                <img src="lay6.jpg" class="w-full h-64 object-cover">
+                </div>
+
+                <div class="gallery-item rounded-[2rem] overflow-hidden shadow-sm">
+                <img src="lay7.jpg" class="w-full h-64 object-cover">
+                </div>
+
+                <div class="gallery-item rounded-[2rem] overflow-hidden shadow-sm">
+                <img src="lay8.jpg" class="w-full h-64 object-cover">
+                </div>
+
+                <div class="gallery-item rounded-[2rem] overflow-hidden shadow-sm">
+                <img src="lay9.jpg" class="w-full h-64 object-cover">
+                </div>
+
+                <div class="gallery-item rounded-[2rem] overflow-hidden shadow-sm">
+                <img src="lay10.jpg" class="w-full h-64 object-cover">
+                </div>
+
+                <div class="gallery-item rounded-[2rem] overflow-hidden shadow-sm">
+                <img src="lay11.jpg" class="w-full h-64 object-cover">
+                </div>
+
+            </div>
+
+        </section>
+
+        <div class="text-center mt-8">
+            <button id="moreBtn" class="bg-cat-eye text-white px-8 py-3 rounded-full shadow-lg">
+            더 보기
+            </button>
+        </div>
+        
+        <section class="text-center bg-cat-eye/10 rounded-[2rem] p-10 mb-10">
+            <h2 class="text-2xl font-display font-bold text-gray-800 mb-4">레이에게 간식을 줄까요?</h2>
+            <p class="text-gray-600 mb-6">츄르를 주면 기분이 좋아져요!</p>
+            
+            <button id="treatBtn" class="bg-cat-gray hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1 hover:shadow-xl flex items-center justify-center gap-2 mx-auto">
+                <i class="fa-solid fa-fish-fins"></i> 츄르 주기
+            </button>
+            
+            <div id="reactionMessage" class="mt-4 text-lg font-bold text-cat-eye h-8 opacity-0 transition-opacity duration-300">
+                <!-- 반응 메시지가 표시될 곳 -->
+            </div>
+        </section>
+
+        <section class="bg-white dark:bg-gray-800 rounded-[2rem] p-8 shadow-sm border border-gray-100 dark:border-gray-700 mb-10 transition">
+
+    <h2 class="text-2xl font-display font-bold text-gray-800 dark:text-white mb-6">
+        <i class="fa-solid fa-comment-dots text-cat-eye mr-2"></i>
+        레이에게 한마디
+    </h2>
+
+    <!-- 댓글 입력 -->
+    <div class="flex flex-col sm:flex-row gap-3">
+        <input
+            id="commentInput"
+            type="text"
+            maxlength="100"
+            placeholder="레이에게 하고 싶은 말을 남겨주세요 🐱"
+            class="flex-1 px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-cat-eye">
+
+        <button
+            id="commentBtn"
+            class="bg-cat-eye hover:opacity-90 text-white px-6 py-3 rounded-xl transition">
+            작성
+        </button>
+    </div>
+
+    <p class="text-sm text-gray-400 mt-2">
+        최대 100자까지 작성 가능합니다.
+    </p>
+
+    <!-- 댓글 목록 -->
+    <div id="commentList" class="mt-8 space-y-4"></div>
+
+</section>
+
+    </main>
+
+    <footer class="bg-white border-t border-gray-100 py-8 mt-10">
+        <div class="max-w-4xl mx-auto px-4 text-center text-sm text-gray-400">
+            <p>Made with <i class="fa-solid fa-heart text-pink-400 mx-1"></i> for Lay</p>
+            <p class="mt-2">&copy; 2026 Lay's Family. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        
+        // 간식 주기 버튼 이벤트 리스너
+        document.getElementById('treatBtn').addEventListener('click', function() {
+            const messages = [
+                "골골골~ (만족스러운 소리) 🐾",
+                "야옹! (고맙다는 뜻) 😻",
+                "냠냠짭짭! 더 없냥? 🐟",
+                "기분이 좋아져서 다리 사이를 맴돕니다. 💕"
+            ];
+            
+            // 랜덤 메시지 선택
+            const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+            
+            const msgElement = document.getElementById('reactionMessage');
+            msgElement.textContent = randomMsg;
+            msgElement.style.opacity = '1';
+            
+            // 버튼 애니메이션 효과 (크게 튀어오르기)
+            this.classList.add('scale-110');
+            setTimeout(() => {
+                this.classList.remove('scale-110');
+            }, 200);
+
+            // 3초 후 메시지 서서히 사라짐
+            setTimeout(() => {
+                msgElement.style.opacity = '0';
+            }, 3000);
+        });
+
+        const items = document.querySelectorAll(".gallery-item");
+const moreBtn = document.getElementById("moreBtn");
+
+let visible = 4;
+
+// 처음에는 4장만
+items.forEach((item,index)=>{
+    if(index>=visible){
+        item.style.display="none";
+    }
+});
+
+moreBtn.onclick=()=>{
+
+    if(visible<items.length){
+
+        for(let i=visible;i<visible+4 && i<items.length;i++){
+            items[i].style.display="block";
+        }
+
+        visible+=4;
+
+        if(visible>=items.length){
+            moreBtn.innerText="접기";
+        }
+
+    }else{
+
+        items.forEach((item,index)=>{
+            item.style.display=index<4?"block":"none";
+        });
+
+        visible=4;
+        moreBtn.innerText="더 보기";
+
+        document.getElementById("gallery").scrollIntoView({
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+const themeToggle = document.getElementById("themeToggle");
+const themeIcon = document.getElementById("themeIcon");
+
+// 저장된 테마 불러오기
+if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.classList.add("dark");
+    themeIcon.classList.replace("fa-moon", "fa-sun");
+}
+
+themeToggle.addEventListener("click", () => {
+
+    document.documentElement.classList.toggle("dark");
+
+    if(document.documentElement.classList.contains("dark")){
+        localStorage.setItem("theme","dark");
+        themeIcon.classList.replace("fa-moon","fa-sun");
+    }else{
+        localStorage.setItem("theme","light");
+        themeIcon.classList.replace("fa-sun","fa-moon");
+    }
+
+});
+
+
+// ====================== 댓글 기능 ======================
+
+const commentInput = document.getElementById("commentInput");
+const commentBtn = document.getElementById("commentBtn");
+const commentList = document.getElementById("commentList");
+
+// 저장된 댓글 불러오기
+let comments = JSON.parse(localStorage.getItem("comments")) || [];
+
+// 화면 출력
+renderComments();
+
+// 작성 버튼
+commentBtn.addEventListener("click", addComment);
+
+// 엔터 입력
+commentInput.addEventListener("keypress", function(e){
+    if(e.key === "Enter"){
+        addComment();
+    }
+});
+
+// 댓글 추가
+function addComment(){
+
+    const text = commentInput.value.trim();
+
+    if(text===""){
+        alert("댓글을 입력해주세요!");
+        return;
+    }
+
+    const now = new Date();
+
+    const time =
+        now.getFullYear()+"."+
+        String(now.getMonth()+1).padStart(2,"0")+"."+
+        String(now.getDate()).padStart(2,"0")+" "+
+        String(now.getHours()).padStart(2,"0")+":"+
+        String(now.getMinutes()).padStart(2,"0");
+
+    const comment = {
+        id: Date.now(),      // 댓글 고유번호
+        text: text,
+        time: time
+    };
+
+    comments.unshift(comment);
+
+    saveComments();
+
+    commentInput.value="";
+}
+
+// 댓글 저장
+function saveComments(){
+    localStorage.setItem("comments", JSON.stringify(comments));
+    renderComments();
+}
+
+// 댓글 출력
+function renderComments(){
+
+    commentList.innerHTML="";
+
+    comments.forEach(comment=>{
+
+        const div=document.createElement("div");
+
+        div.className="bg-gray-100 dark:bg-gray-700 rounded-xl p-4";
+
+        div.innerHTML=`
+            <div class="flex justify-between items-center">
+
+                <div>
+                    <strong class="text-cat-eye">익명 집사</strong><br>
+                    <span class="text-xs text-gray-500">${comment.time}</span>
+                </div>
+
+                <button
+                    onclick="deleteComment(${comment.id})"
+                    class="text-red-500 hover:text-red-700 font-bold">
+                    삭제
+                </button>
+
+            </div>
+
+            <p class="mt-3 text-gray-700 dark:text-gray-200">
+                ${comment.text}
+            </p>
+        `;
+
+        commentList.appendChild(div);
+
+    });
+
+}
+
+// 댓글 삭제
+function deleteComment(id){
+
+    if(!confirm("댓글을 삭제하시겠습니까?")){
+        return;
+    }
+
+    comments = comments.filter(comment => comment.id !== id);
+
+    saveComments();
+
+}
+    </script>
+</body>
+</html>
